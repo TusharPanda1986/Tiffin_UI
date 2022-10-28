@@ -15,8 +15,10 @@ export class HeaderComponent implements OnInit {
   title: string = '';
   closeResult = '';
 
-  @ViewChild('loginModal')
-  loginModal!: ElementRef;
+  @ViewChild('content')
+  content!: any;
+
+  private modalRef: any;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
     // customize default values of modals used by this component tree
@@ -25,7 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onButtonClick() {
-    this.modalService.open(LoginV2Component);
+    this.modalRef = this.modalService.open(LoginV2Component, { centered: true });
   }
 
   ngOnInit(): void {}
